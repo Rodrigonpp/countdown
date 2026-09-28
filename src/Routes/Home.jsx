@@ -1,5 +1,7 @@
 import "./Home.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { CountdownContext } from "../context/CountdownContext";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [title, setTitle] = useState();
@@ -7,10 +9,29 @@ const Home = () => {
   const [image, setImage] = useState();
   const [color, setColor] = useState();
 
+  const { setEvent } = useContext(CountdownContext);
+
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const eventObject = {
+      title,
+      date,
+      image,
+      color,
+    };
+
+    setEvent(eventObject);
+
+    navigate("/countdown");
+  };
+
   return (
     <div className="home">
       <h2>Monte a sua contagem regressiva!</h2>
-      <form className="countdown-form">
+      <form className="countdown-form" onSubmit={handleSubmit}>
         <label>
           <span>Título:</span>
           <input

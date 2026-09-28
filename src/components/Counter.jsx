@@ -1,13 +1,15 @@
-import './Counter.css'
-import React from 'react'
+import "./Counter.css";
+import React from "react";
 
-const Counter = ({ title, number }) => {
-    return (
-        <div className='counter'>
-            <p className="counter-number">{number}</p>
-            <h3 className="counter-text">{title}</h3>
-        </div>
-    )
-}
+const Counter = ({ title, number, eventColor }) => {
+  return (
+    <div className="counter">
+      <p className="counter-number" style={{ backgroundColor: eventColor }}>
+        {number}
+      </p>
+      <h3 className="counter-text">{title}</h3>
+    </div>
+  );
+};
 
-export default Counter
+export default Counter;
